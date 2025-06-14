@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akio Draven | Web3 Security Specialist</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    :root {
+      --primary: #0a192f;
+      --secondary: #112240;
+      --accent: #64ffda;
+      --crypto: #f3ba2f;
+      --text: #ccd6f6;
+      --light-text: #a8b2d1;
+      --highlight: #e6f1ff;
+    }
+    
+    body {
+      background-color: var(--primary);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(23, 42, 75, 0.7) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(23, 42, 75, 0.7) 0%, transparent 20%);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Header Styles */
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      color: var(--accent);
+      text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+      background: linear-gradient(45deg, var(--accent), #3399ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .tagline {
+      font-size: 1.5rem;
+      color: var(--crypto);
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+    
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .badge {
+      background: rgba(100, 255, 218, 0.1);
+      border: 1px solid var(--accent);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: var(--accent);
+      transition: all 0.3s ease;
+    }
+    
+    .badge.crypto {
+      background: rgba(243, 186, 47, 0.1);
+      border-color: var(--crypto);
+      color: var(--crypto);
+    }
+    
+    .badge:hover {
+      background: var(--accent);
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .badge.crypto:hover {
+      background: var(--crypto);
+      color: var(--primary);
+    }
+    
+    /* Stats Section */
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+    
+    .stat-card {
+      background: var(--secondary);
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      border-bottom: 3px solid var(--accent);
+    }
+    
+    .stat-card.crypto {
+      border-bottom: 3px solid var(--crypto);
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .stat-value {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 15px 0;
+    }
+    
+    .stat-card.crypto .stat-value {
+      color: var(--crypto);
+    }
+    
+    .stat-label {
+      font-size: 1.1rem;
+      color: var(--light-text);
+    }
+    
+    /* Section Styles */
+    .section {
+      background: var(--secondary);
+      border-radius: 10px;
+      padding: 30px;
+      margin: 30px 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .section-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid rgba(100, 255, 218, 0.3);
+    }
+    
+    .section-header.crypto {
+      border-bottom: 2px solid rgba(243, 186, 47, 0.3);
+    }
+    
+    .section-header i {
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin-right: 15px;
+    }
+    
+    .section-header.crypto i {
+      color: var(--crypto);
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--highlight);
+    }
+    
+    /* Hall of Fame */
+    .hack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+    
+    .company-logo {
+      background: rgba(100, 255, 218, 0.05);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 150px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(100, 255, 218, 0.1);
+    }
+    
+    .company-logo.crypto {
+      background: rgba(243, 186, 47, 0.05);
+      border: 1px solid rgba(243, 186, 47, 0.1);
+    }
+    
+    .company-logo:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+      border-color: var(--accent);
+    }
+    
+    .company-logo.crypto:hover {
+      box-shadow: 0 5px 15px rgba(243, 186, 47, 0.2);
+      border-color: var(--crypto);
+    }
+    
+    .company-logo i {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--accent);
+    }
+    
+    .company-logo.crypto i {
+      color: var(--crypto);
+    }
+    
+    /* Methodology */
+    .process-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .step {
+      flex: 1;
+      min-width: 250px;
+      background: rgba(10, 25, 47, 0.5);
+      padding: 25px;
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
+    }
+    
+    .step.crypto {
+      border-left: 3px solid var(--crypto);
+    }
+    
+    .step-number {
+      display: inline-block;
+      width: 35px;
+      height: 35px;
+      background: var(--accent);
+      color: var(--primary);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 35px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    
+    .step.crypto .step-number {
+      background: var(--crypto);
+    }
+    
+    /* Tools */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+    
+    .tool {
+      background: rgba(100, 255, 218, 0.05);
+      border-radius: 8px;
+      padding: 20px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(100, 255, 218, 0.1);
+    }
+    
+    .tool.crypto {
+      background: rgba(243, 186, 47, 0.05);
+      border: 1px solid rgba(243, 186, 47, 0.1);
+    }
+    
+    .tool:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+      border-color: var(--accent);
+    }
+    
+    .tool.crypto:hover {
+      box-shadow: 0 5px 15px rgba(243, 186, 47, 0.2);
+      border-color: var(--crypto);
+    }
+    
+    .tool i {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: var(--accent);
+    }
+    
+    .tool.crypto i {
+      color: var(--crypto);
+    }
+    
+    /* Testimonials */
+    .testimonials-container {
+      position: relative;
+      margin-top: 30px;
+      overflow: hidden;
+      padding: 20px 0;
+    }
+    
+    .testimonials {
+      display: flex;
+      transition: transform 0.5s ease;
+      gap: 30px;
+      padding-bottom: 20px;
+    }
+    
+    .testimonial {
+      min-width: 300px;
+      background: rgba(10, 25, 47, 0.5);
+      padding: 25px;
+      border-radius: 8px;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .testimonial.crypto {
+      border: 1px solid rgba(243, 186, 47, 0.2);
+    }
+    
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .testimonial-header img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-right: 15px;
+      border: 2px solid var(--accent);
+      object-fit: cover;
+    }
+    
+    .testimonial.crypto .testimonial-header img {
+      border: 2px solid var(--crypto);
+    }
+    
+    .testimonial-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      color: var(--light-text);
+      line-height: 1.8;
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+    
+    .testimonial-author {
+      font-weight: bold;
+      color: var(--highlight);
+      font-size: 1.1rem;
+    }
+    
+    .testimonial-role {
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+    
+    .testimonial.crypto .testimonial-role {
+      color: var(--crypto);
+    }
+    
+    .testimonial-nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 15px;
+    }
+    
+    .testimonial-nav button {
+      background: rgba(100, 255, 218, 0.1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-nav button:hover {
+      background: var(--accent);
+      color: var(--primary);
+    }
+    
+    /* Contact */
+    .contact-methods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 25px;
+      justify-content: center;
+    }
+    
+    .contact-card {
+      flex: 1;
+      min-width: 250px;
+      background: rgba(100, 255, 218, 0.05);
+      border-radius: 8px;
+      padding: 25px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(100, 255, 218, 0.1);
+      max-width: 300px;
+    }
+    
+    .contact-card.crypto {
+      background: rgba(243, 186, 47, 0.05);
+      border: 1px solid rgba(243, 186, 47, 0.1);
+    }
+    
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+      border-color: var(--accent);
+    }
+    
+    .contact-card.crypto:hover {
+      box-shadow: 0 5px 15px rgba(243, 186, 47, 0.2);
+      border-color: var(--crypto);
+    }
+    
+    .contact-card i {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    
+    .contact-card.crypto i {
+      color: var(--crypto);
+    }
+    
+    .contact-card h3 {
+      margin-bottom: 15px;
+      color: var(--highlight);
+    }
+    
+    .contact-link {
+      color: var(--accent);
+      text-decoration: none;
+      display: block;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+      word-break: break-all;
+    }
+    
+    .contact-card.crypto .contact-link {
+      color: var(--crypto);
+    }
+    
+    .contact-link:hover {
+      color: var(--highlight);
+      text-decoration: underline;
+    }
+    
+    .crypto-highlight {
+      color: var(--crypto);
+      font-weight: 600;
+    }
+    
+    .bank-highlight {
+      color: #ff6b6b;
+      font-weight: 600;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .tagline {
+        font-size: 1.2rem;
+      }
+      
+      .stats-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .testimonial {
+        min-width: 280px;
+      }
+      
+      .contact-card {
+        min-width: 100%;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .testimonial-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .testimonial-header img {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header Section -->
+    <header>
+      <div class="header-content">
+        <h1>Akio Draven</h1>
+        <div class="tagline">Web3 Security Specialist & Bug Bounty Hunter</div>
+        
+        <div class="badges">
+          <div class="badge crypto">Smart Contract Auditor</div>
+          <div class="badge">Web3 Security Expert</div>
+          <div class="badge crypto">Blockchain Pentester</div>
+          <div class="badge">Financial Security</div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Stats Section -->
+    <div class="stats-container">
+      <div class="stat-card crypto">
+        <i class="fab fa-ethereum fa-2x"></i>
+        <div class="stat-value">80+</div>
+        <div class="stat-label">Web3 Projects Secured</div>
+      </div>
+      
+      <div class="stat-card">
+        <i class="fas fa-trophy fa-2x"></i>
+        <div class="stat-value">$120K+</div>
+        <div class="stat-label">Total Bounties Earned</div>
+      </div>
+      
+      <div class="stat-card crypto">
+        <i class="fas fa-coins fa-2x"></i>
+        <div class="stat-value">30+</div>
+        <div class="stat-label">Crypto Platforms Audited</div>
+      </div>
+      
+      <div class="stat-card">
+        <i class="fas fa-shield-alt fa-2x"></i>
+        <div class="stat-value">15+</div>
+        <div class="stat-label">Critical Vulnerabilities Found</div>
+      </div>
+    </div>
+    
+    <!-- Hall of Fame Section -->
+    <div class="section">
+      <div class="section-header crypto">
+        <i class="fas fa-medal"></i>
+        <h2 class="section-title">Security Achievements</h2>
+      </div>
+      <p>Recognized by crypto platforms and financial institutions for critical security findings:</p>
+      
+      <div class="hack-grid">
+        <div class="company-logo crypto">
+          <i class="fab fa-ethereum"></i>
+          <span>Ethereum DApps</span>
+        </div>
+        
+        <div class="company-logo crypto">
+          <i class="fas fa-coins"></i>
+          <span>DeFi Platforms</span>
+        </div>
+        
+        <div class="company-logo crypto">
+          <i class="fas fa-wallet"></i>
+          <span>Crypto Wallets</span>
+        </div>
+        
+        <div class="company-logo crypto">
+          <i class="fas fa-exchange-alt"></i>
+          <span>Swap Exchanges</span>
+        </div>
+        
+        <div class="company-logo">
+          <i class="fas fa-university"></i>
+          <span class="bank-highlight">PNB Bank</span>
+        </div>
+        
+        <div class="company-logo crypto">
+          <i class="fab fa-bitcoin"></i>
+          <span>Bitcoin Services</span>
+        </div>
+        
+        <div class="company-logo crypto">
+          <i class="fas fa-link"></i>
+          <span>Oracle Networks</span>
+        </div>
+        
+        <div class="company-logo crypto">
+          <i class="fas fa-chart-line"></i>
+          <span>Trading Platforms</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Methodology Section -->
+    <div class="section">
+      <div class="section-header">
+        <i class="fas fa-cogs"></i>
+        <h2 class="section-title">Web3 Security Methodology</h2>
+      </div>
+      <p>My specialized approach to securing blockchain and crypto platforms:</p>
+      
+      <div class="process-steps">
+        <div class="step crypto">
+          <div class="step-number">1</div>
+          <h3>Smart Contract Analysis</h3>
+          <p>Thorough auditing of Solidity/Vyper contracts for reentrancy, logic flaws, and gas optimization</p>
+        </div>
+        
+        <div class="step crypto">
+          <div class="step-number">2</div>
+          <h3>DeFi Protocol Testing</h3>
+          <p>Security assessment of liquidity pools, yield farming, and flash loan mechanisms</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Financial System Pentesting</h3>
+          <p>Identifying vulnerabilities in banking and financial transaction systems</p>
+        </div>
+        
+        <div class="step crypto">
+          <div class="step-number">4</div>
+          <h3>Wallet Security</h3>
+          <p>Testing crypto wallets for seed phrase vulnerabilities and transaction flaws</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Tools Section -->
+    <div class="section">
+      <div class="section-header crypto">
+        <i class="fas fa-tools"></i>
+        <h2 class="section-title">Web3 Security Tools</h2>
+      </div>
+      <p>Specialized toolkit for blockchain and crypto security assessments:</p>
+      
+      <div class="tools-grid">
+        <div class="tool crypto">
+          <i class="fas fa-search"></i>
+          <span>Slither</span>
+        </div>
+        
+        <div class="tool crypto">
+          <i class="fas fa-shield-alt"></i>
+          <span>Mythril</span>
+        </div>
+        
+        <div class="tool crypto">
+          <i class="fas fa-bolt"></i>
+          <span>Foundry</span>
+        </div>
+        
+        <div class="tool crypto">
+          <i class="fas fa-code"></i>
+          <span>Hardhat</span>
+        </div>
+        
+        <div class="tool">
+          <i class="fas fa-globe"></i>
+          <span>Burp Suite</span>
+        </div>
+        
+        <div class="tool">
+          <i class="fas fa-terminal"></i>
+          <span>Metasploit</span>
+        </div>
+        
+        <div class="tool crypto">
+          <i class="fas fa-cube"></i>
+          <span>Truffle</span>
+        </div>
+        
+        <div class="tool crypto">
+          <i class="fas fa-brain"></i>
+          <span>Echidna</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Testimonials Section -->
+    <div class="section">
+      <div class="section-header">
+        <i class="fas fa-comments"></i>
+        <h2 class="section-title">Client Feedback</h2>
+      </div>
+      
+      <div class="testimonials-container">
+        <div class="testimonials" id="testimonials-slider">
+          <div class="testimonial crypto">
+            <div class="testimonial-header">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Security Director">
+              <div class="testimonial-info">
+                <div class="testimonial-author">Rajesh Kumar</div>
+                <div class="testimonial-role">CTO, CryptoSwap Platform</div>
+              </div>
+            </div>
+            <p class="testimonial-text">"Akio discovered a critical vulnerability in our liquidity pool that could have drained funds. His expertise in DeFi security saved us from a potential disaster."</p>
+          </div>
+          
+          <div class="testimonial">
+            <div class="testimonial-header">
+              <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Bank Manager">
+              <div class="testimonial-info">
+                <div class="testimonial-author">Vikram Singh</div>
+                <div class="testimonial-role">IT Security, PNB</div>
+              </div>
+            </div>
+            <p class="testimonial-text">"Akio identified and helped fix a serious vulnerability in our online banking portal. His professionalism and technical skills were impressive."</p>
+          </div>
+          
+          <div class="testimonial crypto">
+            <div class="testimonial-header">
+              <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="CTO">
+              <div class="testimonial-info">
+                <div class="testimonial-author">Priya Sharma</div>
+                <div class="testimonial-role">Lead Developer, NFT Marketplace</div>
+              </div>
+            </div>
+            <p class="testimonial-text">"We've worked with many researchers, but Akio stands out for his depth of knowledge in Web3 security. He found vulnerabilities that could have cost us millions."</p>
+          </div>
+          
+          <div class="testimonial crypto">
+            <div class="testimonial-header">
+              <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Project Lead">
+              <div class="testimonial-info">
+                <div class="testimonial-author">Amit Patel</div>
+                <div class="testimonial-role">Project Lead, DeFi Startup</div>
+              </div>
+            </div>
+            <p class="testimonial-text">"Akio's comprehensive audit of our smart contracts gave us confidence before launch. His attention to detail is exceptional."</p>
+          </div>
+          
+          <div class="testimonial">
+            <div class="testimonial-header">
+              <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Security Consultant">
+              <div class="testimonial-info">
+                <div class="testimonial-author">Neha Verma</div>
+                <div class="testimonial-role">Security Consultant, FinTech</div>
+              </div>
+            </div>
+            <p class="testimonial-text">"I've collaborated with Akio on several projects. His ability to find edge cases in complex systems is remarkable."</p>
+          </div>
+        </div>
+        
+        <div class="testimonial-nav">
+          <button id="prev-testimonial"><i class="fas fa-chevron-left"></i></button>
+          <button id="next-testimonial"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Contact Section -->
+    <div class="section">
+      <div class="section-header crypto">
+        <i class="fas fa-envelope"></i>
+        <h2 class="section-title">Contact Me</h2>
+      </div>
+      
+      <div class="contact-methods">
+        <div class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <h3>Email</h3>
+          <a href="mailto:davidbablu283@gmail.com" class="contact-link" target="_blank">davidbablu283@gmail.com</a>
+        </div>
+        
+        <div class="contact-card crypto">
+          <i class="fab fa-github"></i>
+          <h3>GitHub</h3>
+          <a href="https://github.com/DravenAudit" class="contact-link" target="_blank">@DravenAudit</a>
+        </div>
+        
+        <div class="contact-card crypto">
+          <i class="fab fa-twitter"></i>
+          <h3>Twitter</h3>
+          <a href="https://x.com/Davion_Labs" class="contact-link" target="_blank">@Davion_Labs</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 30px 0; color: var(--light-text); font-size: 0.9rem;">
+      <p>© 2023 Akio Draven | Web3 Security Specialist | All Rights Reserved</p>
+      <p>Specializing in blockchain security, smart contract auditing, and financial system penetration testing</p>
+    </footer>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const testimonials = document.getElementById('testimonials-slider');
+      const prevButton = document.getElementById('prev-testimonial');
+      const nextButton = document.getElementById('next-testimonial');
+      
+      let currentIndex = 0;
+      const testimonialCount = testimonials.children.length;
+      const visibleTestimonials = window.innerWidth < 768 ? 1 : 3;
+      
+      function updateSliderPosition() {
+        const testimonialWidth = testimonials.children[0].offsetWidth + 30;
+        testimonials.style.transform = `translateX(-${currentIndex * testimonialWidth}px)`;
+      }
+      
+      prevButton.addEventListener('click', function() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateSliderPosition();
+        }
+      });
+      
+      nextButton.addEventListener('click', function() {
+        if (currentIndex < testimonialCount - visibleTestimonials) {
+          currentIndex++;
+          updateSliderPosition();
+        }
+      });
+      
+      // Initialize slider position
+      updateSliderPosition();
+      
+      // Update on window resize
+      window.addEventListener('resize', updateSliderPosition);
+    });
+  </script>
+</body>
+</html>
